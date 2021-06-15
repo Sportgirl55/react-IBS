@@ -1,49 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 // import { Description } from '../description/Description';
 import { Item } from '../Item/Item';
 
-export class Body extends React.Component {
-  state = {
-    item: null,
-    items: []
-  }
+export function Body(props) {
 
-  componentDidMount(prop, state) {
-    this.getData()
-  }
 
-  getData = async () => {
+  const [items, setItems] = useState([]);
+  console.log(items)
+
+  const getData = async () => {
     try {
       const res = await fetch('http://localhost:3006/item');
       const data = await res.json()
-      this.setState({
-        items: data.content
-      })
+      setItems(data)
     } catch (e) {
       console.log("ERRR", e)
     }
   }
 
+  useEffect( () => {
+    getData()
+  }, [])
+
   // onDesc() {
-   
+
   //     return (
   //       <Link to="/description">{Description}</Link>
   //     )
-    
+
   // }
 
-  render() {
-    return (
-      <main className="catalog">
-        <div className="item__box">
-           {this.state.items.map((elem, index) => (
-            <Item data={this.state.items[index]}  key={this.state.items[index].id} />)
-          )} 
-        </div>
-      </main>
-    )
-  }
+  return (
+    <main className="catalog">
+      <div className="item__box"> 
+          
+          {/* {items.content.map((elem, index) => (
+             <Item data={items.content[index]} key={items.content[index].id} />)
+           )}   */}
+      </div>
+    </main>
+ )
+
 }
 
 

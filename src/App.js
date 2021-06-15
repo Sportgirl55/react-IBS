@@ -6,14 +6,8 @@ import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 function App() {
   return (
     <div>
-      <Router>
         <Header />
-        <Route path="/" component={Body} />
-        <Route path="/description" component={Description}/>
-      </Router>
-
-     
-      
+        <Body />
     </div>
   );
 }
