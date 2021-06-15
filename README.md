@@ -1,3 +1,6 @@
+Для того, чтобы запустить это приложение, нужно установить Mockoon, и использовать данные из папки src/item/mock.json
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
