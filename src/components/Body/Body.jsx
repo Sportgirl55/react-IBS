@@ -4,10 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Item } from '../Item/Item';
 
 export function Body(props) {
-
-
   const [items, setItems] = useState([]);
-  console.log(items)
+  console.log(items.content)
 
   const getData = async () => {
     try {
@@ -23,26 +21,19 @@ export function Body(props) {
     getData()
   }, [])
 
-  // onDesc() {
-
-  //     return (
-  //       <Link to="/description">{Description}</Link>
-  //     )
-
-  // }
 
   return (
     <main className="catalog">
       <div className="item__box"> 
-          
-          {/* {items.content.map((elem, index) => (
-             <Item data={items.content[index]} key={items.content[index].id} />)
-           )}   */}
+      {items.content && items.content.map(elem => (
+            <Item data={elem}  key={elem.id}  />)
+          )}  
       </div>
     </main>
  )
 
 }
+
 
 
 
