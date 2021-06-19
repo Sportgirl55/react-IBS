@@ -1,28 +1,29 @@
-import { Component } from "react";
+import React from "react";
 
-export class Description extends Component {
-  props = this.props;
-  
 
-  render() {
-    console.log(this.props)
-    return (
-       <div className="card__wrap">
+export function Description(props) {
+  return (
+    <div className="card">
+      <div className="card__img">
+        <img src={`http://localhost:3006/${props.item.picture.path}`} alt={props.item.picture.alt} />
+      </div>
+
+      <div className="card__desc-wrap">
         <div className="card__desc">
-          <h1 className="product__title">{this.props.content}</h1>
-          <p>{this.props.content}</p>
+          <h1 className="product__title">{props.item.name}</h1>
+          <p>{props.item.description}</p>
           <h2 className="product__desc">Details</h2>
-          <p>{this.props.content}</p>
+          <p>{props.item.details}</p>
         </div>
 
         <div className="card__order-wrap">
           <div className="card__order">
-            <span className="card__order-price">{this.props.content} {this.props.content}</span>
+            <span className="card__order-price">{props.item.price.currency} {props.item.price.value}</span>
           </div>
 
           <div className="card__order-quantity">
             <div className="card__btns-box">
-              <button className="card__control-btn">&#8722;</button>
+              <button className="card__control-btn">-</button>
               <input type="number" />
               <button className="card__control-btn">+</button>
             </div>
@@ -36,8 +37,8 @@ export class Description extends Component {
               fill="#959595" />
           </svg>
         </div>
+        <button className="card__exit" onClick={props.onExit}>Turn Back</button>
       </div>
-    )
-  }
-
+    </div>
+  )
 }

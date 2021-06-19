@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Item extends Component {
- 
-  render() {
+export function Item (props) {
     return (
-      <div className="item">
+     <>
         <svg className="icon__like" width="24" height="24" viewBox="0 0 24 24" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <path
@@ -12,12 +10,11 @@ export class Item extends Component {
             fill="#959595" />
         </svg>
 
-        <img src={`http://localhost:3006/${this.props.data.picture.path}`} alt={this.props.data.picture.alt} />
-        <span className="item__title">{this.props.data.name}</span>
-        <span className="item__price">{this.props.data.price.currency} {this.props.data.price.value}</span>
-      </div>
+        <img src={`http://localhost:3006/${props.data.picture.path}`} alt={props.data.picture.alt} />
+        <span className="item__title">{props.data.name}</span>
+        <span className="item__price">{props.data.price.currency} {props.data.price.value}</span>
+      </>
     )
-  }
 }
 
 
